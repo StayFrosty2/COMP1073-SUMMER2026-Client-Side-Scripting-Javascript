@@ -33,7 +33,7 @@
 			const lowOrHi = document.querySelector("#lowOrHi");
 
 			// STEP 1c: Create variables to represent the guessing form
-			const guessField = document.querySelector("#guessfield");
+			const guessField = document.querySelector("#guessField");
 			const guessSubmit = document.querySelector("button");
 
 			// STEP 1d: Create variables to initialize counter for number of guesses
@@ -47,7 +47,8 @@
 			// STEP 3: Build a function to check the user's guess
 			function check() {
 				// STEP 3b: Create a variable to contain what number the user entered
-				
+				let userGuess = Number(guessField.value);
+				console.log(userGuess);
 				// STEP 3c: If this is the first guess, add some text to the screen as a label for listing previous guesses for reference
 				
 				
