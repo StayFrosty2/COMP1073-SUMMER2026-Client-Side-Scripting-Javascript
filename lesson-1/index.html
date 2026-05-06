@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>JavaScript Introduction</h1>
-	<p>Hello, <em>teacher Scott</em>. This week's lesson is all about the basics of adding JavaScript to HTML and CSS.</p>
+	<p>Hello, <em onlcick="updateName()"></em>>teacher Scott</em>. This week's lesson is all about the basics of adding JavaScript to HTML and CSS.</p>
 	<script>
 		/*
 		STEP 1: What is JavaScript?
@@ -39,7 +39,7 @@
 		// If grabbing multiple elements, use document.querySelectorAll("[insert css query here]") instead
 		
 		// STEP 3: Assign a click event listener to the above element, and include a reference to the function to be invoked
-		element.addEventListener("click", updateName);
+		// element.addEventListener("click", updateName);
 		
 		// STEP 4: Create a function that waits for the above click event
 		function updateName() {
@@ -50,7 +50,7 @@
 			element.textContent = firstName;
 		}
 		// STEP 5: Comment out the addEventListener above, and replace it with an onclick attribute typed directly into the EM element in the HTML - note that this is common, but it is considered to be bad practice - separate your HTML and your JS
-
+		
 		// STEP 6: Move the above JavaScript into an external file and reference it with an empty SCRIPT element inside the HEAD element - be sure to add a defer attribute in the SCRIPT start tag
 
 		// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
