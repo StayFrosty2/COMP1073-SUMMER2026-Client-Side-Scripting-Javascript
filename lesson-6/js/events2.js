@@ -1,5 +1,5 @@
 // Declare and initialize variables
-const elem = document.querySelector('p');
+const elem = document.querySelector('h1');
 
 // Functions
 function random(number) {
@@ -27,7 +27,12 @@ const submit = document.getElementById('submit');
 const para = document.querySelector('#formErrors');
 
 /* STEP 2b: Create a script to capture the onsubmit event using preventDefault() */
-
+form.addEventListener("submit", (event) => {
+    console.log(event);
+    if (email.value.trim() === "") {
+        event.preventDefault();
+    }
+});
 // Next, open up gallery.html...
 
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
