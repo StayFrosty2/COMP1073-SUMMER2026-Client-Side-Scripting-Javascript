@@ -47,14 +47,14 @@ class Coffee {
     }
 }
 /* STEP 2: Instatiate a coffee based on the above constructor function */
-let claireCoffee = new Coffee("medium", false);
-claireCoffee.serveIt();
+// let claireCoffee = new Coffee("medium", false);
+// claireCoffee.serveIt();
 
-let joeCoffee = new Coffee("large", true);
-joeCoffee.serveIt();
+// let joeCoffee = new Coffee("large", true);
+// joeCoffee.serveIt();
 
-let nedCoffee = new Coffee("small", false);
-nedCoffee.serveIt();
+// let nedCoffee = new Coffee("small", false);
+// nedCoffee.serveIt();
 
 /* STEP 3: Add a method to the Coffee class called serveIt() */
 
@@ -77,3 +77,55 @@ class Latte extends Coffee {
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript
 
 // Special thanks to https://openclipart.org/detail/293550/coffee-to-go for the very cool coffee cup SVG
+
+
+// Cameron Yon - Lab 2 Work
+
+// Create the subclass of coffee, in my case it will be an iced coffee
+class IcedCoffee extends Coffee {
+    // Flavoring variable for the coffee
+    flavor;
+    
+    // Constructor
+    constructor(size, isDecaf, flavor) {
+        super(size, isDecaf);
+        this.flavor = flavor;
+    }
+
+    // Method to add the description of the coffee to the output
+    icedCoffeeDesc() {
+        let cup = document.createElement("p");
+        cup.textContent = `A ${this.size} ${this.isDecaf ? "decafinated" : "caffinated"} Iced Coffee with a ${this.flavor} shot.`;
+        output.appendChild(cup);
+    }
+}
+
+// Going further, a second subclass extending from IcedCoffee
+class IcedLatte extends IcedCoffee {
+    // milkType variable
+    milkType;
+
+    // Constructor
+    constructor(size, isDecaf, flavor, milkType) {
+        super(size, isDecaf, flavor);
+        this.milkType = milkType;
+    }
+
+    // Method to add the description of the coffee to the output
+    icedLatteDesc() {
+        let cup = document.createElement("p");
+        cup.textContent = `A ${this.size} ${this.isDecaf ? "decafinated" : "caffinated"} Iced Latte with a ${this.flavor} shot and ${this.milkType} milk.`;
+        output.appendChild(cup);
+    }
+}
+
+// Initiate the two objects
+let claireCoffee = new IcedCoffee("medium", false, "vanilla");
+let rubyCoffee = new IcedLatte("large", true, "hazelnut", "oat");
+
+// Call the serveIt() and respective description functions for both
+claireCoffee.serveIt();
+claireCoffee.icedCoffeeDesc();
+
+rubyCoffee.serveIt();
+rubyCoffee.icedLatteDesc();
