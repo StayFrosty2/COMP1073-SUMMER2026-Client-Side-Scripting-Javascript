@@ -25,6 +25,39 @@
         "clover honey"
       ],
       "image" : "https://stayfrosty2.github.io/COMP1073-SUMMER2026-Client-Side-Scripting-Javascript/lesson-10/images/peach-mango.svg"
+    },
+    {
+      "name" : "Superb Strawberry",
+      "calories" : 325,
+      "type" : "ice cream",
+      "ingredients" : [
+        "strawberry jam",
+        "strawberry chunks",
+        "vanilla extract"
+      ],
+      "image" : "https://stayfrosty2.github.io/COMP1073-SUMMER2026-Client-Side-Scripting-Javascript/lesson-10/images/strawberry-sprinkle.svg"
+    },
+    {
+      "name" : "Blazing Bubblegum",
+      "calories" : 500,
+      "type" : "ice cream",
+      "ingredients" : [
+        "fruit flavoring",
+        "cinnamon",
+        "bubblegum pieces"
+      ],
+      "image" : "https://stayfrosty2.github.io/COMP1073-SUMMER2026-Client-Side-Scripting-Javascript/lesson-10/images/ice-cream-xtra.svg"
+    },
+    {
+      "name" : "Peanut Butter & Cookie Dough",
+      "calories" : 475,
+      "type" : "ice cream",
+      "ingredients" : [
+        "Real Cookie Dough",
+        "Peanut Butter",
+        "Reese's Cups Candy (TM)"
+      ],
+      "image" : "https://stayfrosty2.github.io/COMP1073-SUMMER2026-Client-Side-Scripting-Javascript/lesson-10/images/ice-cream-xtra2.svg"
     }
   ]
 }
