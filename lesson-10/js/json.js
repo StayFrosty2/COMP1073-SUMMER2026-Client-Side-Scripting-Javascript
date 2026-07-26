@@ -17,25 +17,28 @@ async function populate() {
     console.log(responseJson);
     
     // STEP 9a: Invoke the populateHeader function here, then build it below
-    
+    populateHeader(responseJson);
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
-    
+    showTopFlavors(responseJson);
 }
 
 // STEP 3b: Call the populate() function
 
 
 /* STEP 9b: Build out the populateHeader() function */
-function populateHeader() {
+function populateHeader(json) {
     // Create the H1 element
-    
+    let h1 = document.createElement("h1");
+    let para = document.createElement("p");
     // Grab the company name from the JSON object and use it for the text node
-    
+    h1.textContent = json.companyName;
+    para.textContent = `Head Office: ${json.headOffice}, est. ${json.established}, Status: ${json.active ? "Active" : "Inactive"}`;
     // Inject the complete H1 element into the DOM, inside the HEADER
-    
+    header.appendChild(h1);
+    header.appendChild(para);
 };
 /* STEP 10b: Assemble the showTopFlavors() function */
-function showTopFlavors() {
+function showTopFlavors(json) {
     // STEP 10c: Attache the JSON topFlavors object to a variable
     //let topFlavors = jsonObj.topFlavors;
     // STEP 10d: Loop through the topFlavors object
