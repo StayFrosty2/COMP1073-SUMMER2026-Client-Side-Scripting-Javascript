@@ -23,7 +23,7 @@ async function populate() {
 }
 
 // STEP 3b: Call the populate() function
-
+populate();
 
 /* STEP 9b: Build out the populateHeader() function */
 function populateHeader(json) {
@@ -40,23 +40,42 @@ function populateHeader(json) {
 /* STEP 10b: Assemble the showTopFlavors() function */
 function showTopFlavors(json) {
     // STEP 10c: Attache the JSON topFlavors object to a variable
-    //let topFlavors = jsonObj.topFlavors;
+    let topFlavors = json.topFlavors;
     // STEP 10d: Loop through the topFlavors object
     for (let i = 0; i < topFlavors.length; i ++) {
+        console.log(topFlavors[i]);
         // STEP 10e: build HTML elements for the content
-        
+        let article = document.createElement("article");
+        let h2 = document.createElement("h2");
+        let image = document.createElement("img");
+        let p1 = document.createElement("p");
+        let p2 = document.createElement("p");
+        let list = document.createElement("ul");
 
         // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
-        
+        h2.textContent = topFlavors[i].name;
+        p1.textContent = "Calories: " + topFlavors[i].calories;
+        p2.textContent = "Type: " + topFlavors[i].type;
+        image.src = topFlavors[i].image; // also could do image.setAttribute(src, url);
 
         // STEP 10g: Build a loop for the ingredients array in the JSON
-        
+        let ingredients = topFlavors[i].ingredients;
+        for (let j = 0; j < ingredients.length; j++) {
             // add the ingredient to the UL
+            let listItem = document.createElement("li");
+            listItem.textContent = ingredients[j];
+            list.appendChild(listItem);
+        }
 
         // STEP 10h: Append each of the above HTML elements to the ARTICLE element
-        
+        article.appendChild(h2);
+        article.appendChild(p1);
+        article.appendChild(p2);
+        article.appendChild(list);
+        article.appendChild(image);
+
         // STEP 10i: Append each complete ARTICLE element to the SECTION element
-        
+        section.appendChild(article);
     };
 };
 // STEP 11: The instructor will edit the JSON file - refresh your page to see the updated content
