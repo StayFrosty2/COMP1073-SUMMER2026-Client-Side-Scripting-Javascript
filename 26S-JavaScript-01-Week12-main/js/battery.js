@@ -12,17 +12,26 @@ const chargeMeter = document.querySelector(
 /* Functions
 -------------------------------------------------- */
 // STEP 3a: Create the updateBatteryStatus() function
-
-// STEP 3b: Update the charging status
-
-// STEP 3c: Update the charge level
-
+function updateBatteryStatus(battery) {
+    if(battery.charging === true) {
+    // STEP 3b: Update the charging status
+        chargeStatus.textContent = "Plugged In";
+    }
+    else {
+        chargeStatus.textContent = "On Battery";
+    }
+    // STEP 3c: Update the charge level
+    chargeLevel.textContent = battery.level * 100 + "%";
+    chargeMeter.value = battery.level * 100;
+}
 // STEP 2a: Using the getBattery() method of the navigator object,
 //create a promise to retrieve the battery information
-
-// STEP 2b: See what the battery object contains
-
-// STEP 3d: Update the battery information when the promise resolves
+navigator.getBattery().then((battery) => {
+    // STEP 2b: See what the battery object contains
+    console.log(battery);
+    // STEP 3d: Update the battery information when the promise resolves
+    updateBatteryStatus(battery);
+});
 
 // STEP 4a: Event listener for changes to the charging status
 
