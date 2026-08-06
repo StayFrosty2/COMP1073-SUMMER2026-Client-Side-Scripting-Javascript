@@ -116,14 +116,17 @@ function displayMessage(json) {
 
     // Lab: Adds Claude AI's response to the conversation
 
-    let response = 0;
+    let response;
 
     for(i = 0; i < json.content.length; i++) {
+        console.log(json.content[i].type);
         if(json.content[i].type === "text") {
             response = i;
-            break;
         }
     }
+
+    console.log(response);
+
     conversation.push({"role" : "assistant", "content" : json.content[response].text});
 
     let para = document.createElement("p"); // <p></p>
