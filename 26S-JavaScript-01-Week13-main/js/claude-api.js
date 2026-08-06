@@ -32,10 +32,13 @@ sendMessageBtn.addEventListener("click", sendChatMessage);
 // STEP 6b: Check usage button
 checkUsageBtn.addEventListener("click", checkTokenUsage);
 
+// Lab: array to store the conversation
+let conversation = [];
+
 /* STEP 7: Create the checkTokenUsage function */
 function checkTokenUsage() {
     // STEP 7a: Create complete url
-    let url = `${baseUrl}/api/claude/status`;
+    let url = `${baseURL}/api/claude/status`;
     // STEP 7b: Request status from the API
     fetch(url, {
         headers: {
@@ -62,11 +65,23 @@ function displayStatus(json) {
     Tokens Allocated: ${json.tokens_allocated}
     Tokens Remaining: ${json.tokens_remaining}
     Tokens Used: ${json.tokens_used}`;
+    pre.style.border = "3px dotted green";
+    results.appendChild(pre);
 }
 /* STEP 8: Create the sendChatMessage function for Claude API interaction */
 function sendChatMessage() {
     // STEP 8a: Get form values
     let userInput = userMessage.value;
+
+    // Lab: Adds user's message to the conversation
+    conversation.push({"role" : "user", "content" : userInput});
+
+    // Lab: Places the users response in the results section
+    let para = document.createElement("p"); // <p></p>
+    para.textContent = `User: 
+    ${userInput}`;
+    para.style.border = "3px solid blue";
+    results.appendChild(para);
 
     // STEP 8b: Create complete url
     let url = `${baseURL}/api/claude/messages`;
@@ -74,11 +89,9 @@ function sendChatMessage() {
     let body = {
         "model" : "claude-sonnet-5",
         "max_tokens" : maxTokens,
-        "messages" : [{
-            "role" : "user",
-            "content" : userInput
-        }]
+        "messages" : conversation
     }
+    
     // STEP 8d: Make the API request using fetch()
     fetch(url, {
         method: "POST",
@@ -101,8 +114,22 @@ function displayMessage(json) {
     // STEP 8f: Extract the message content from Claude's response
     console.log(json);
 
+    // Lab: Adds Claude AI's response to the conversation
+
+    let response = 0;
+
+    for(i = 0; i < json.content.length; i++) {
+        if(json.content[i].type === "text") {
+            response = i;
+            break;
+        }
+    }
+    conversation.push({"role" : "assistant", "content" : json.content[response].text});
+
     let para = document.createElement("p"); // <p></p>
-    para.textContent = json.content[0].text;
+    para.textContent = `Claude AI:
+    ${json.content[0].text}`;
+    para.style.border = "3px solid red";
     results.appendChild(para);
 }
 
